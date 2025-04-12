@@ -1,0 +1,10 @@
+.note{
+    min-height: 200px;
+    background-color: rgba(199, 255, 236, 0.596);
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+   
+    display: flex;
+    flex-direction: column;
+}
