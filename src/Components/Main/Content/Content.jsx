@@ -7,13 +7,15 @@ import "./content.css";
 
 export default function Content({content_prop}){
     const {currentPage} = content_prop;
-
+    const [openEdit, setOpenEdit] = useState(true);
+    
+    const [noteU, setNoteU] = useState({});
     const [note, setNote] = useState({
         id: null,
         title: "",
         body: "",
         date_created: null,
-        rPage: "note"
+        state: "note"
     });
 
     const [noteList, setNoteList] = useState([]);
@@ -35,7 +37,7 @@ export default function Content({content_prop}){
     function archiveNote(id) {
         setNoteList(prevNotes =>
             prevNotes.map(note =>
-                note.id === id ? { ...note, rPage: 'archive' } : note
+                note.id === id ? { ...note, state: 'archive' } : note
             )
         );
     }
@@ -43,9 +45,35 @@ export default function Content({content_prop}){
     function trashNote(id){
         setNoteList(prevNotes =>
             prevNotes.map(note =>
-                note.id === id ? { ...note, rPage: 'trash' } : note
+                note.id === id ? { ...note, state: 'trash' } : note
             )
         );
+    }
+
+
+    function openEditor(id){
+        const note = noteList.find(note => note.id === id);
+        setNoteU(note);
+        setOpenEdit(false);
+    }
+
+    function handleChangeU(e){
+        const {value, name} = e.target;
+        setNoteU(pV => ({...pV, [name]: value}));
+    }
+
+    function closeEditor(){
+        setOpenEdit(true);
+    }
+
+    function updateNote(id){
+        setNoteList(prevNotes =>
+            prevNotes.map(note =>
+                note.id === id ? { ...noteU } : note
+            )
+        );
+        setOpenEdit(true);
+        console.log(noteU);
     }
 
     const add_note_prop = {
@@ -58,14 +86,26 @@ export default function Content({content_prop}){
         noteList: noteList,
         archiveNote: archiveNote,
         trashNote: trashNote,
-        currentPage: currentPage
+        currentPage: currentPage,
+        openEditor: openEditor,
     }
 
     return (
     <>
-        <div className="content">
+        <div className={`content ${currentPage !== 'note' && 'archive-trash' }`}>
             {currentPage === 'note' && <AddNote add_note_prop={add_note_prop}/>}
             <NoteList note_list_prop={note_list_prop}/>
+            <div className={`editor-container ${openEdit && 'collapse'}`}>
+                <div className='editor-inner' onChange={handleChangeU}>
+                    <div><button onClick={closeEditor}>Close</button></div><br/>
+                    <div>
+                        <label>Title:</label>
+                        <input name='title' type='text' value={noteU.title}/>
+                    </div><br/>
+                    <textarea name='body' cols={100} rows={35} value={noteU.body}></textarea>
+                    <button onClick={() => updateNote(noteU.id)}>Update</button>
+                </div>
+            </div>
         </div>
     </>
     );

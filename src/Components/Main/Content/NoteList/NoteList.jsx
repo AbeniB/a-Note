@@ -6,11 +6,12 @@ export default function NoteList({note_list_prop}){
         noteList,
         archiveNote,
         trashNote,
-        currentPage
+        currentPage,
+        openEditor
     } = note_list_prop;
     
-    function listNotes(currentPage){
-        const renderdList = noteList.filter(note => note.rPage === currentPage);
+    function listNotes(){
+        const renderdList = noteList.filter(note => note.state === currentPage);
         return renderdList.map(note => {
                 const note_prop = {
                     id: note.id,
@@ -18,9 +19,9 @@ export default function NoteList({note_list_prop}){
                     body: note.body, 
                     date_created: note.date_created,
                     archiveNote: archiveNote,
-                    trashNote: trashNote
+                    trashNote: trashNote,
+                    openEditor: openEditor
                 }
-                console.log(noteList);
                 return <Note key={note.id} note_prop={note_prop}/>
             })
         

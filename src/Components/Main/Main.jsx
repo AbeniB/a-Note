@@ -10,9 +10,9 @@ export default function Main({ main_prop }){
     const [currentPage, setCurrentPage] = useState("note");
 
     function changePage(e){
-        const {name} = e.target;
+        const {name, nodeName} = e.target;
 
-        if(name === "note" || "archive" || "trash"){
+        if(nodeName === "BUTTON"){
             setCurrentPage(name);
         }
     }
