@@ -1,11 +1,13 @@
-import '../Component Styles/Sidebar.css';
+import './Sidebar.css';
 
-export default function Sidebar({ changeContent, isCollapsed }){
+export default function Sidebar({ sideBar_prop }){
+    const {changePage, isSidebarCollapsed} = sideBar_prop;
+
     return(
-        <div  className={`sidebar ${isCollapsed ? 'collapsed' : ''}`}>
-            <button onClick={() => changeContent('note')}>{isCollapsed ? 'N' : 'Notes'}</button>
-            <button onClick={() => changeContent('archive')}>{isCollapsed ? 'A' : 'Archived'}</button>
-            <button onClick={() => changeContent('bin')}>{isCollapsed ? 'B' : 'Bin'}</button>
-        </div>
+        <aside className={`sidebar ${isSidebarCollapsed ? 'collapse' : ''}`} onClick={(e) => changePage(e)}>
+            <button name='note'>{isSidebarCollapsed ? 'N' : 'Note'}</button>
+            <button name='archive'>{isSidebarCollapsed ? 'A' : 'Archive'}</button>
+            <button name='trash'>{isSidebarCollapsed ? 'T' : 'Trash'}</button>
+        </aside>
     );
 }

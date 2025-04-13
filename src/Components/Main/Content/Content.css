@@ -3,19 +3,3 @@
     grid-template-rows: 150px auto;
     min-height: 100vh;
 }
-
-.addNote{
-    background-color: antiquewhite;
-    padding-top: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-
-.noteList{
-    background-color: rgb(146, 148, 9);
-    display: flex;
-    flex-wrap: wrap;
-    padding: 10px;
-}

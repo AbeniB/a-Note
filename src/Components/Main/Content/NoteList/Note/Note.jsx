@@ -1,8 +1,8 @@
-import "../Component Styles/Note.css";
+import "./Note.css";
 
-export default function Note({attribute_prop, method_prop}){
-    const {id, title, body, date_created} = attribute_prop;
-    const {archiveNote, deleteNote} = method_prop;
+export default function Note({note_prop}){
+    const {id, title, body, date_created, archiveNote, trashNote} = note_prop;
+    console.log(note_prop)
 
     return(
     <>
@@ -10,8 +10,7 @@ export default function Note({attribute_prop, method_prop}){
             <p>{title}</p>
             <textarea cols={30} rows={20} readOnly>{body}</textarea>
             <div>
-                <button>Edit</button>
-                <button onClick={() => deleteNote(id)}>Delete</button>
+                <button onClick={() => trashNote(id)}>Delete</button>
                 <button onClick={() => archiveNote(id)}>Archive</button>
             </div>
             <p>Created_At: {date_created}</p>

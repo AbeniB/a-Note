@@ -2,37 +2,34 @@ import { useState } from "react";
 
 import Sidebar from "./Sidebar/Sidebar";
 import Content from "./Content/Content";
-import Archived from "../Extra Components/Archived";
-import Bin from "../Extra Components/Bin";
+import "./Main.css";
 
-import "../Component Styles/Main.css";
+export default function Main({ main_prop }){
+    const { isSidebarCollapsed } = main_prop;
 
-export default function Main({ isSidebarCollapsed }){
-    const [buttonManager, setbuttonManager] = useState({
-        note: true,
-        archive: false,
-        bin: false
-    });
-    const [archivedList, setArchivedList] = useState([]);
+    const [currentPage, setCurrentPage] = useState("note");
 
-    function changeContent(btn){
-        const pages = {
-            note: false,
-            archive: false,
-            bin: false
+    function changePage(e){
+        const {name} = e.target;
+
+        if(name === "note" || "archive" || "trash"){
+            setCurrentPage(name);
         }
-        setbuttonManager({...pages, [btn]: true});
     }
 
-    function handleArchive(note){
-        setArchivedList(pv => [...pv, note]);
+    const sideBar_prop = {
+        changePage: changePage,
+        isSidebarCollapsed: isSidebarCollapsed
     }
+
+    const content_prop = {
+        currentPage: currentPage
+    }
+    
     return (
-        <div className="main">
-            <Sidebar changeContent={changeContent} isCollapsed={isSidebarCollapsed}   className="sidebar" />
-            {buttonManager.note && <Content handleArchive={handleArchive}/>}
-            {buttonManager.archive && <Archived archivedList={archivedList}/>}
-            {buttonManager.bin && <Bin/>}
-        </div>
+        <main className="main">
+            <Sidebar sideBar_prop={sideBar_prop} />
+            <Content content_prop={content_prop}/>
+        </main>
     );
 }

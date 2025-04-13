@@ -1,0 +1,6 @@
+.noteList{
+    background-color: rgb(146, 148, 9);
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+}

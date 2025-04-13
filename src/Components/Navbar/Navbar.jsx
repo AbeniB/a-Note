@@ -1,8 +1,10 @@
-import '../Component Styles/Navbar.css';
+import './Navbar.css';
 
-export default function Navbar({ toggleSidebar, toggleProfile, isProfileCollapsed }){
+export default function Navbar({ nav_prop }){
+    const {isProfileCollapsed, toggleSidebar, toggleProfile} = nav_prop;
+    
     return (
-        <div className='navbar'>
+        <nav className='navbar'>
             <button onClick={toggleSidebar} className='sidebarToggleBtn'>=</button>
             <span>a Note</span>
             <div>
@@ -11,15 +13,15 @@ export default function Navbar({ toggleSidebar, toggleProfile, isProfileCollapse
             </div>
             <div>
                 <button onClick={toggleProfile} className='profileToggleBtn'>My Profile</button>
-                <div className={`profile ${isProfileCollapsed ? 'collapsed' : ''}`}>
-                    <span>JohnDoe@email.com</span><br />
-                    <span>Profile_Pic</span> <br/>
+                <div className={`profile ${isProfileCollapsed ? '' : 'collapse'}`}>
+                    <span>JohnDoe@email.com</span><br/>
+                    <span>Profile_Pic</span><br/>
                     <div>
                         <button>Manage Profile</button>
                         <button>Log Out</button>
                     </div>
                 </div>
             </div>
-        </div>
+        </nav>
     );
 }

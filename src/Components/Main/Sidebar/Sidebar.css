@@ -13,6 +13,6 @@
     height: 30px;
 }
 
-.sidebar.collapsed {
+.sidebar.collapse {
     width: 60px;
 }

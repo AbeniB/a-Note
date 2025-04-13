@@ -1,12 +1,12 @@
 import { useState } from 'react';
 
-import Navbar from './Components/Navbar';
-import Main from './Components/Main';
-import Footer from './Components/Footer';
+import Navbar from './Components/Navbar/Navbar';
+import Main from './Components/Main/Main';
+import Footer from './Components/Footer/Footer';
 
 export default function App(){
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(true);
-  const [isProfileCollapsed, setIsProfileCollapsed] = useState(true);
+  const [isProfileCollapsed, setIsProfileCollapsed] = useState(false);
 
   function toggleSidebar() {
     setIsSidebarCollapsed(prev => !prev);
