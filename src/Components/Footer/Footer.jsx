@@ -6,8 +6,10 @@ export default function Footer(){
         <div>a-Note</div>
         <span>CopyRight @Abeni-B PLC</span>
         <div>
-            <button>Home</button>
-            <button>About</button>
+            <button>Linkedin</button>
+            <button>Facebook</button>
+            <button>Github</button>
+            <button>Pinstripe</button>
         </div>
     </div>
     );

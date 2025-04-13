@@ -1,0 +1,31 @@
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(183, 235, 235);
+}
+
+.sidebarToggleBtn{
+    width: 40px;
+    height: 40px;
+}
+
+.search-all{
+    width: 20rem;
+}
+
+.profileToggleBtn{
+    height: 40px;
+}
+
+.profile{
+    background-color: rgba(96, 96, 243, 0.541);
+    padding: 10px;
+    position: absolute;
+    top: 50px;
+    right: 10px;
+}
+
+.profile.collapsed{
+    display: none;
+}
