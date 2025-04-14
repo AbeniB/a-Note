@@ -1,8 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+
 .footer{
-    background-color: rgb(0, 0, 0);
-    color: wheat;
-    text-align: center;
-    padding: 10px;
-    display: grid;
-    grid-template-columns: 100px auto 300px;
+    padding-top: 5px;
+    background-color: #213555;
+    color: #D8C4B6;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-family: "Lora", serif;
 }
+
+.footer .icon_brandName{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.footer .contacts{
+    display: flex;
+    gap: 5px;
+}
+
+.footer .contacts a:hover {
+    padding-bottom: 2px;
+    box-shadow: 0 4px 6px #557196;
+}
+
+/* For Tablets (Portrait and Landscape) */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .footer{
+        font-size: smaller;
+    }
+    .footer .icon_brandName img{
+        width: 16px;
+        height: 16px;
+    }
+    .footer .contacts{
+        gap: 0px;
+    }
+
+    .footer .contacts a svg{
+        width: 30px;
+        height: 30px;
+    }
+
+    .footer .contacts a img{
+        width: 26px;
+        height: 24px;
+    }
+}
+
+/* For Mobile Phones (Portrait and Landscape) */
+@media only screen and (max-width: 767px) {
+    .footer{
+        font-size: 10px;
+        padding: 5px 5px;
+    }
+    .footer .icon_brandName img{
+        width: 14px;
+        height: 14px;
+    }
+    .footer .icon_brandName span{
+        display: none;
+    }
+    .footer .contacts{
+        gap: 0px;
+    }
+
+    .footer .contacts a svg{
+        width: 20px;
+        height: 20px;
+    }
+
+    .footer .contacts a img{
+        width: 16px;
+        height: 14px;
+    }
+}
+

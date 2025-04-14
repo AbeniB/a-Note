@@ -6,10 +6,9 @@ export default function Navbar({ nav_prop }){
     return (
         <nav className='navbar'>
             <button onClick={toggleSidebar} className='sidebarToggleBtn'>=</button>
-            <span>a Note</span>
-            <div>
-                <input className='search-all' name='search-all' type="text" placeholder='Search All...'/>
-                <button type='button'>Search</button>
+            <div className='icon_brandName'>
+                <img width="20" height="20" src="https://img.icons8.com/pastel-glyph/64/note.png" alt="note--v1"/>
+                <span>a-Note</span>
             </div>
             <div>
                 <button onClick={toggleProfile} className='profileToggleBtn'>My Profile</button>
