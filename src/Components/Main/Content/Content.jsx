@@ -99,7 +99,6 @@ export default function Content({content_prop}){
                 <div className='editor-inner' onChange={handleChangeU}>
                     <div><button onClick={closeEditor}>Close</button></div><br/>
                     <div>
-                        <label>Title:</label>
                         <input name='title' type='text' value={noteU.title}/>
                     </div><br/>
                     <textarea name='body' cols={100} rows={35} value={noteU.body}></textarea>

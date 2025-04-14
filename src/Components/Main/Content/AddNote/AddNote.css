@@ -1,7 +1,74 @@
 .addNote{
-    background-color: antiquewhite;
+    background-color: #3E5879;
     padding-top: 10px;
+    padding-right: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
+/* Basic Reset for input and textarea */
+input, textarea {
+    font-family: "Roboto Mono", monospace;
+    font-size: 16px;
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 2px solid #ccc;
+    outline: none;
+    width: 100%;
+    box-sizing: border-box; /* Ensures padding and border are inside the element */
+    transition: all 0.3s ease;
+    background-color: #fff;
+    color: #333;
+  }
+  
+  /* Focus and Hover Effects */
+  input:focus, textarea:focus {
+    border-color: #3E5879; /* Blue color on focus */
+    box-shadow: 0 0 8px rgba(62, 88, 121, 0.3); /* Light blue glow */
+  }
+  
+  /* Styling for Text Area */
+  textarea {
+    resize: vertical; /* Allows vertical resizing only */
+    min-height: 120px; /* Sets a minimum height */
+    max-height: 400px; /* Sets a max height */
+  }
+  
+  /* Styling for Input Field */
+  input[type="text"], input[type="email"], input[type="password"], input[type="tel"] {
+    height: 40px; /* Taller input field */
+  }
+  
+  /* Placeholder text styling */
+  input::placeholder, textarea::placeholder {
+    color: #999; /* Lighter color for placeholder text */
+    font-style: italic; /* Italic style for placeholder */
+  }
+  
+  /* Disabled State */
+  input:disabled, textarea:disabled {
+    background-color: #f0f0f0;
+    border-color: #ddd;
+    color: #aaa;
+    cursor: not-allowed;
+  }
+  
+  /* Error State (when validation fails) */
+  input:invalid, textarea:invalid {
+    border-color: #f44336; /* Red border for invalid input */
+    background-color: #fdd;
+  }
+  
+  input:invalid:focus, textarea:invalid:focus {
+    box-shadow: 0 0 8px rgba(244, 67, 54, 0.3); /* Red glow when invalid */
+  }
+  
+
+  .addNoteBtn{
+    padding: 10px 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+  }

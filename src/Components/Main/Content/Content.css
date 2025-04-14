@@ -1,6 +1,6 @@
 .content{
     display: grid;
-    grid-template-rows: 150px auto;
+    grid-template-rows: fit-content(150px) auto;
     min-height: 100vh;
 }
 
@@ -9,6 +9,7 @@
 }
 
 .editor-container{
+    font-family: "Lora", serif;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,7 +28,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgb(211, 229, 238);
+    background-color: #D8C4B6;
     border-radius: 30px;
     padding: 10px;
 }
@@ -35,3 +36,4 @@
 .editor-container.collapse{
     display: none;
 }
+  
