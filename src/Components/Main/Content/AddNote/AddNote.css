@@ -31,7 +31,7 @@ input, textarea {
   /* Styling for Text Area */
   textarea {
     resize: vertical; /* Allows vertical resizing only */
-    min-height: 120px; /* Sets a minimum height */
+    min-height: 400px; /* Sets a minimum height */
     max-height: 400px; /* Sets a max height */
   }
   
@@ -71,4 +71,8 @@ input, textarea {
     margin-bottom: 10px;
     display: flex;
     align-items: center;
+  }
+
+  a{
+    text-decoration: none;
   }

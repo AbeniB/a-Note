@@ -1,10 +1,19 @@
 .note{
-    height: 300px;
-    background-color: rgba(199, 255, 236, 0.596);
-    border: 1px solid black;
+    height: 500px;
+    background-color: #D8C4B6;
+    color: #213555;
     border-radius: 10px;
-    padding: 10px;
+    padding: 15px;
    
     display: flex;
     flex-direction: column;
+}
+
+.note textarea {
+    resize: none; /* Disables resizing */
+}
+
+.note .button_Holder{
+    display: flex;
+    justify-content: end;
 }

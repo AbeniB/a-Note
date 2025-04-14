@@ -2,3 +2,34 @@ body{
     margin: 0px;
     padding: 0px;
 }
+
+/* Customize the overall scrollbar */
+::-webkit-scrollbar {
+    width: 15px; /* For vertical scrollbar */
+    height: 12px; /* For horizontal scrollbar */
+  }
+  
+  /* Customize the track (background area) */
+  ::-webkit-scrollbar-track {
+    background-color: #f0f0f0; /* Light gray track */
+    border-radius: 10px;
+  }
+  
+  /* Customize the thumb (the draggable part) */
+  ::-webkit-scrollbar-thumb {
+    background-color: #3E5879; /* Blue-ish thumb color */
+    border-radius: 10px;
+    border: 2px solid #f0f0f0; /* Add border to thumb */
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Hover effect for the thumb */
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #324966; /* Darker blue on hover */
+  }
+  
+  /* Optional: Customizing the corner where horizontal and vertical scrollbars meet */
+  ::-webkit-scrollbar-corner {
+    background-color: #f0f0f0; /* Same as track */
+  }
+  

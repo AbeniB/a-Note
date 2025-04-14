@@ -50,6 +50,20 @@ export default function Content({content_prop}){
         );
     }
 
+    function restoreNote(id) {
+        setNoteList(prevNotes =>
+            prevNotes.map(note =>
+                note.id === id ? { ...note, state: 'note' } : note
+            )
+        );
+    }
+
+    function deletePermanently(id){
+        setNoteList(prevNotes =>
+            prevNotes.map(note => note.id !== id)
+        );
+    }
+
 
     function openEditor(id){
         const note = noteList.find(note => note.id === id);
@@ -88,6 +102,8 @@ export default function Content({content_prop}){
         trashNote: trashNote,
         currentPage: currentPage,
         openEditor: openEditor,
+        restoreNote: restoreNote,
+        deletePermanently: deletePermanently
     }
 
     return (
@@ -97,12 +113,12 @@ export default function Content({content_prop}){
             <NoteList note_list_prop={note_list_prop}/>
             <div className={`editor-container ${openEdit && 'collapse'}`}>
                 <div className='editor-inner' onChange={handleChangeU}>
-                    <div><button onClick={closeEditor}>Close</button></div><br/>
+                    <div><button className='button' onClick={closeEditor}>Close</button></div><br/>
                     <div>
                         <input name='title' type='text' value={noteU.title}/>
                     </div><br/>
-                    <textarea name='body' cols={100} rows={35} value={noteU.body}></textarea>
-                    <button onClick={() => updateNote(noteU.id)}>Update</button>
+                    <textarea name='body' cols={40} rows={45} value={noteU.body}></textarea>
+                    <button className='button' onClick={() => updateNote(noteU.id)}>Update</button>
                 </div>
             </div>
         </div>

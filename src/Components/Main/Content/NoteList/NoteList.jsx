@@ -7,7 +7,9 @@ export default function NoteList({note_list_prop}){
         archiveNote,
         trashNote,
         currentPage,
-        openEditor
+        openEditor,
+        restoreNote,
+        deletePermanently
     } = note_list_prop;
     
     function listNotes(){
@@ -20,16 +22,21 @@ export default function NoteList({note_list_prop}){
                     date_created: note.date_created,
                     archiveNote: archiveNote,
                     trashNote: trashNote,
-                    openEditor: openEditor
+                    openEditor: openEditor,
+                    restoreNote,
+                    deletePermanently,
+                    state: note.state
                 }
                 return <Note key={note.id} note_prop={note_prop}/>
             })
         
     }
     return (
-        <div className="noteList">
-            <p>{currentPage} :page</p>
-            {listNotes()}
+        <div id="noteList" className="noteList">
+            <p className='currentPage_info'>{currentPage.toUpperCase()}: </p>
+            <div className='notes_holder'>
+                {listNotes()}
+            </div>
         </div>
     );
 }
