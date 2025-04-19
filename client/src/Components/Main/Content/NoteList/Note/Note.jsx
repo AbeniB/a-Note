@@ -1,8 +1,10 @@
 import "./Note.css";
+import ContentContext from "../../../../../Contexts/ContentContext";
+import { useContext } from "react";
 
-export default function Note({note_prop}){
-    const {id, title, body, date_created, archiveNote, trashNote, openEditor,
-        restoreNote, deletePermanently, state} = note_prop;
+export default function Note(){
+    const {id, title, body, date_created, state} = note_prop;
+    const {archiveNote, trashNote, openEditor, restoreNote, deletePermanently} = useContext(ContentContext);
 
     return(
     <>

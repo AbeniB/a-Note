@@ -1,7 +1,9 @@
 import './Navbar.css';
+import AppContext from "../../Contexts/AppContext";
+import { useContext } from 'react';
 
-export default function Navbar({ nav_prop }){
-    const {isProfileCollapsed, toggleSidebar, toggleProfile} = nav_prop;
+export default function Navbar(){
+    const {isProfileCollapsed, toggleSidebar, toggleProfile} = useContext(AppContext);
     
     return (
         <nav className='navbar'>

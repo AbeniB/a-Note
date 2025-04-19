@@ -1,11 +1,10 @@
 import { useState } from "react";
-
+import MainContext from "../../Contexts/MainContext";
 import Sidebar from "./Sidebar/Sidebar";
 import Content from "./Content/Content";
 import "./Main.css";
 
-export default function Main({ main_prop }){
-    const { isSidebarCollapsed } = main_prop;
+export default function Main(){
 
     const [currentPage, setCurrentPage] = useState("note");
 
@@ -16,20 +15,13 @@ export default function Main({ main_prop }){
             setCurrentPage(name); // Update the currentPage state
         }
     }
-
-    const sideBar_prop = {
-        changePage: changePage,
-        isSidebarCollapsed: isSidebarCollapsed
-    }
-
-    const content_prop = {
-        currentPage: currentPage
-    }
     
     return (
         <main className="main">
-            <Sidebar sideBar_prop={sideBar_prop} />
-            <Content content_prop={content_prop}/>
+            <MainContext.Provider value={{changePage, currentPage}}>
+                <Sidebar />
+                <Content />
+            </MainContext.Provider>
         </main>
     );
 }

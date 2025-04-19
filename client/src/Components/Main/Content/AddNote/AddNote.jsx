@@ -1,7 +1,9 @@
 import './AddNote.css';
+import ContentContext from "../../../../Contexts/ContentContext";
+import { useContext } from 'react';
 
-export default function AddNote({add_note_prop}){
-    const {note, handleChange, addNote } = add_note_prop;
+export default function AddNote(){
+    const {note, handleChange, addNote } = useContext(ContentContext);
     return(
     <div className="addNote">
         <input name="title" type="text" placeholder="title" onChange={handleChange} value={note.title}/>

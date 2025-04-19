@@ -1,7 +1,13 @@
 import './Sidebar.css';
+import { useContext } from 'react';
+import AppContext from "../../../Contexts/AppContext";
+import MainContext from "../../../Contexts/MainContext";
 
-export default function Sidebar({ sideBar_prop }){
-    const {changePage, isSidebarCollapsed} = sideBar_prop;
+
+export default function Sidebar(){
+
+    const { isSidebarCollapsed} = useContext(AppContext);
+    const {changePage} = useContext(MainContext);
 
     return(
         <aside className={`sidebar ${isSidebarCollapsed ? 'collapse' : ''}`} onClick={(e) => changePage(e)}>

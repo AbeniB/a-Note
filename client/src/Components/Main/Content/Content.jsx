@@ -1,12 +1,15 @@
 import { v4 as uuidv4 } from 'uuid';
 import { useState } from "react";
+import MainContext from "../../../Contexts/MainContext";
+import ContentContext from "../../../Contexts/ContentContext";
+import { useContext } from 'react';
 
 import NoteList from "./NoteList/NoteList";
 import AddNote from './AddNote/AddNote';
 import "./content.css";
 
-export default function Content({content_prop}){
-    const {currentPage} = content_prop;
+export default function Content(){
+    const {currentPage} = useContext(MainContext);
     const [openEdit, setOpenEdit] = useState(true);
     
     const [noteU, setNoteU] = useState({});
@@ -90,27 +93,12 @@ export default function Content({content_prop}){
         console.log(noteU);
     }
 
-    const add_note_prop = {
-        note: note,
-        handleChange: handleChange,
-        addNote: addNote
-    }
-
-    const note_list_prop = {
-        noteList: noteList,
-        archiveNote: archiveNote,
-        trashNote: trashNote,
-        currentPage: currentPage,
-        openEditor: openEditor,
-        restoreNote: restoreNote,
-        deletePermanently: deletePermanently
-    }
 
     return (
-    <>
+    <ContentContext.Provider value={{note, handleChange, addNote, noteList, archiveNote, trashNote, openEditor, restoreNote, deletePermanently}}>
         <div className={`content ${currentPage !== 'note' && 'archive-trash' }`}>
-            {currentPage === 'note' && <AddNote add_note_prop={add_note_prop}/>}
-            <NoteList note_list_prop={note_list_prop}/>
+            {currentPage === 'note' && <AddNote />}
+            <NoteList />
             <div className={`editor-container ${openEdit && 'collapse'}`}>
                 <div className='editor-inner' onChange={handleChangeU}>
                     <div><button className='button' onClick={closeEditor}>Close</button></div><br/>
@@ -122,6 +110,6 @@ export default function Content({content_prop}){
                 </div>
             </div>
         </div>
-    </>
+    </ContentContext.Provider>
     );
 }

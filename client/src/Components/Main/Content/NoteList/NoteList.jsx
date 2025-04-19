@@ -1,17 +1,21 @@
 import Note from './Note/Note'
 import './NoteList.css';
+import MainContext from "../../../../Contexts/MainContext";
+import ContentContext from "../../../../Contexts/ContentContext";
+import { useContext } from 'react';
 
-export default function NoteList({note_list_prop}){
+export default function NoteList(){
     const {
         noteList,
         archiveNote,
         trashNote,
-        currentPage,
         openEditor,
         restoreNote,
         deletePermanently
-    } = note_list_prop;
+    } = useContext(ContentContext);
     
+    const {currentPage} = useContext(MainContext);
+
     function listNotes(){
         const renderdList = noteList.filter(note => note.state === currentPage);
         return renderdList.map(note => {
@@ -20,11 +24,6 @@ export default function NoteList({note_list_prop}){
                     title: note.title, 
                     body: note.body, 
                     date_created: note.date_created,
-                    archiveNote: archiveNote,
-                    trashNote: trashNote,
-                    openEditor: openEditor,
-                    restoreNote,
-                    deletePermanently,
                     state: note.state
                 }
                 return <Note key={note.id} note_prop={note_prop}/>
