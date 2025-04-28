@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+body{
+  margin: 0px;
+  padding: 0px;
+  overflow-y: scroll;
+}
+
+.no-scroll {
+  overflow-y: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 15px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f0f0f0;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #3E5879;
+  border: 2px solid #f0f0f0;
+  transition: background-color 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #324966;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: #f0f0f0;
+}
+  

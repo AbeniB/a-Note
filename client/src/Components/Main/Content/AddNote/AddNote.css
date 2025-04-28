@@ -7,7 +7,6 @@
     align-items: center;
 }
 
-/* Basic Reset for input and textarea */
 input, textarea {
     font-family: "Roboto Mono", monospace;
     font-size: 16px;
@@ -16,37 +15,33 @@ input, textarea {
     border: 2px solid #ccc;
     outline: none;
     width: 100%;
-    box-sizing: border-box; /* Ensures padding and border are inside the element */
+    box-sizing: border-box;
     transition: all 0.3s ease;
     background-color: #fff;
     color: #333;
   }
   
-  /* Focus and Hover Effects */
   input:focus, textarea:focus {
-    border-color: #3E5879; /* Blue color on focus */
-    box-shadow: 0 0 8px rgba(62, 88, 121, 0.3); /* Light blue glow */
+    border-color: #3E5879;
+    box-shadow: 0 0 8px rgba(62, 88, 121, 0.3);
   }
   
-  /* Styling for Text Area */
   textarea {
-    resize: vertical; /* Allows vertical resizing only */
-    min-height: 400px; /* Sets a minimum height */
-    max-height: 400px; /* Sets a max height */
+    resize: none;
+    min-height: 400px;
+    max-height: 400px;
   }
   
-  /* Styling for Input Field */
   input[type="text"], input[type="email"], input[type="password"], input[type="tel"] {
-    height: 40px; /* Taller input field */
+    height: 40px;
   }
   
-  /* Placeholder text styling */
+
   input::placeholder, textarea::placeholder {
-    color: #999; /* Lighter color for placeholder text */
-    font-style: italic; /* Italic style for placeholder */
+    color: #999;
+    font-style: italic;
   }
   
-  /* Disabled State */
   input:disabled, textarea:disabled {
     background-color: #f0f0f0;
     border-color: #ddd;
@@ -54,25 +49,65 @@ input, textarea {
     cursor: not-allowed;
   }
   
-  /* Error State (when validation fails) */
   input:invalid, textarea:invalid {
-    border-color: #f44336; /* Red border for invalid input */
+    border-color: #f44336;
     background-color: #fdd;
   }
   
   input:invalid:focus, textarea:invalid:focus {
-    box-shadow: 0 0 8px rgba(244, 67, 54, 0.3); /* Red glow when invalid */
+    box-shadow: 0 0 8px rgba(244, 67, 54, 0.3);
   }
   
 
-  .addNoteBtn{
-    padding: 10px 5px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-  }
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  margin-top: 15px;
+  height: 50px;
+  font-family: "Lora", serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  background-color: #F5EFE7;
+  border: 2px solid #D1C9B8;
+  border-radius: 6px;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+  
+.button:hover {
+    background-color: #E0D7C7;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+  
+.button:active {
+    background-color: #C9B89F;
+    transform: translateY(2px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+  
+.button:focus {
+  border: 2px solid #A9A08E;
+}
 
-  a{
-    text-decoration: none;
+.addNoteBtn{
+  padding: 10px 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+a{
+  text-decoration: none;
+}
+
+@media(max-width: 480px){
+  .addNoteBtn span{
+    display: none;
   }
+}

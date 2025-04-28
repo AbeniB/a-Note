@@ -4,50 +4,84 @@
     background-color: #3E5879;
     display: flex;
     flex-direction: column;
-    padding: 10px;
+    padding: 0px 10px;
 }
-
-.sidebar button{
-    margin-top: 15px;
-    height: 50px;
-}
-
 
 .sidebar.collapse {
     width: 60px;
 }
 
 
-/* Custom Button with #F5EFE7 and Effects */
-.button {
+.sidebar .buttonHolder{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: inherit;
+    margin-top: 60px;
+    padding: inherit;
+}
+
+.sidebar .button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin-top: 15px;
+    height: 50px;
     font-family: "Lora", serif;
     font-size: 16px;
     font-weight: 500;
-    color: #333; /* Dark text color for contrast */
-    background-color: #F5EFE7; /* The soft off-white base color */
-    border: 2px solid #D1C9B8; /* Light border for a subtle look */
+    color: #333;
+    background-color: #F5EFE7;
+    border: 2px solid #D1C9B8;
     border-radius: 6px;
     cursor: pointer;
     outline: none;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
   
-  /* Hover State */
-.button:hover {
-    background-color: #E0D7C7; /* Slightly darker shade for hover */
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2); /* More intense shadow on hover */
+
+.sidebar .button:hover {
+    background-color: #E0D7C7;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
 }
   
-  /* Active (Pressed) State */
-.button:active {
-    background-color: #C9B89F; /* Darker shade when button is pressed */
-    transform: translateY(2px); /* Visual effect of pressing the button */
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15); /* Smaller shadow when pressed */
+.sidebar .button:active {
+    background-color: #C9B89F;
+    transform: translateY(2px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
 }
   
-  /* Optional: Adding a subtle focus effect */
-.button:focus {
-    border: 2px solid #A9A08E; /* Highlight the border on focus */
+.sidebar .button:focus {
+    border: 2px solid #A9A08E;
+}
+
+
+@media (max-width: 768px) {
+    .sidebar{
+        width: 100px;
+    }
 }
   
+@media (max-width: 480px) {
+    .sidebar{
+        width: 100px;
+        z-index: 1;
+    }
+
+    .sidebar.collapse{
+        width: 40px;
+    }
+
+    .sidebar .button{
+        margin-top: 15px;
+        height: 30px;
+        font-size: 14px;
+        justify-content: start;
+        align-items: center;
+    }
+}

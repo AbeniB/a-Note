@@ -5,19 +5,12 @@ import ContentContext from "../../../../Contexts/ContentContext";
 import { useContext } from 'react';
 
 export default function NoteList(){
-    const {
-        noteList,
-        archiveNote,
-        trashNote,
-        openEditor,
-        restoreNote,
-        deletePermanently
-    } = useContext(ContentContext);
+    const {noteList} = useContext(ContentContext);
     
     const {currentPage} = useContext(MainContext);
 
     function listNotes(){
-        const renderdList = noteList.filter(note => note.state === currentPage);
+        const renderdList = noteList.filter(note => note.state === currentPage).reverse();
         return renderdList.map(note => {
                 const note_prop = {
                     id: note.id,

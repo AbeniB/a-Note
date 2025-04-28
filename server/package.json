@@ -1,5 +1,5 @@
 {
-  "name": "a-note-backend",
+  "name": "a-note-server",
   "version": "1.0.0",
   "description": "a-Note Web App's Backend",
   "main": "app.js",

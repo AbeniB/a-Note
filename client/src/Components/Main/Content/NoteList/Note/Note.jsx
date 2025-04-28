@@ -2,15 +2,16 @@ import "./Note.css";
 import ContentContext from "../../../../../Contexts/ContentContext";
 import { useContext } from "react";
 
-export default function Note(){
+export default function Note({note_prop}){
     const {id, title, body, date_created, state} = note_prop;
     const {archiveNote, trashNote, openEditor, restoreNote, deletePermanently} = useContext(ContentContext);
 
     return(
     <>
         <div className="note">
-            <p>{title}</p>
-            <textarea cols={25} rows={20} readOnly value={body}></textarea>
+            <p className="dateCreated">@{date_created}</p>
+            <p className="title">{title}</p>
+            <textarea cols={24} rows={10} readOnly value={body}></textarea>
             <div className="button_Holder">
                 {state !== 'trash' && <button className="button" onClick={() => openEditor(id)}>View</button>}
                 {state !== 'archive' && state !== 'trash' && <button className="button" onClick={() => archiveNote(id)}>Archive</button>}
@@ -19,7 +20,6 @@ export default function Note(){
                 {state === 'trash' && <button className="button" onClick={() => restoreNote(id)}>Restore</button>}
                 {state === 'trash' && <button className="button" onClick={() => deletePermanently(id)}>Delete</button>}
             </div>
-            <p>Created: {date_created}</p>
         </div>
     </>)
 }

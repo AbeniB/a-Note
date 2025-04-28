@@ -3,7 +3,7 @@ import express from "express";
 import passport from "passport";
 import session from "express-session";
 import { initialize, checkAuthenticated, checkNotAuthenticated } from "./auth.js";
-import {register} from "./db.js";
+import {register, createNote, getUserNotes, updateNote, deleteNote} from "./db.js";
 import cors from "cors";
 
 const app = express();
@@ -13,8 +13,8 @@ const PORT = process.env.PORT || 5000;
 initialize(passport);
 
 app.use(cors({
-    origin: 'http://localhost:3000', // Your frontend URL
-    credentials: true // Needed for sessions
+    origin: 'http://localhost:3000',
+    credentials: true
   }))
 app.use(session({
     secret: process.env.LONG_ENCRYPTION_STRING,
@@ -25,6 +25,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(express.urlencoded({extended: true})); 
+
+
+
 
 app.route('/api/signup')
 .post(checkNotAuthenticated, (req, res)=>{
@@ -74,5 +77,22 @@ app.post('/api/logout', (req, res) => {
         res.status(201).json({message: 'logOut sucess'});
     });
 })
+
+
+app.post('/api/createNote', checkAuthenticated, (req, res)=>{
+    const noteData = req.body.noteData;
+    createNote(req.user.id, noteData).then(resp => console.log(resp)).catch(e => console.error(e));
+});
+app.post('/api/getUserNotes', checkAuthenticated, (req, res)=>{
+    getUserNotes(req.user.id).then(resp => resp).catch(e => console.error(e));
+});
+app.post('/api/updateNote', checkAuthenticated, (req, res)=>{
+    const noteData = req.body.noteData;
+    updateNote(req.user.id, noteData).then(resp => console.log(resp)).catch(e => console.error(e));
+});
+app.post('/api/deleteNote', checkAuthenticated, (req, res)=>{
+    const noteData = req.body.noteData;
+    deleteNote(req.user.id, noteData).then(resp => console.log(resp)).catch(e => console.error(e));
+});
 
 app.listen(PORT, () => console.log(`Server is running at http://${hostname}:${PORT}/`));

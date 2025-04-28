@@ -3,7 +3,7 @@ import { useState } from "react";
 import MainContext from "../../../Contexts/MainContext";
 import ContentContext from "../../../Contexts/ContentContext";
 import { useContext } from 'react';
-
+import { useEffect } from 'react';
 import NoteList from "./NoteList/NoteList";
 import AddNote from './AddNote/AddNote';
 import "./content.css";
@@ -11,6 +11,14 @@ import "./content.css";
 export default function Content(){
     const {currentPage} = useContext(MainContext);
     const [openEdit, setOpenEdit] = useState(true);
+
+    useEffect(() => {
+        if (!openEdit) {
+            document.body.classList.add('no-scroll');
+        } else {
+            document.body.classList.remove('no-scroll');
+        }
+    }, [openEdit]);
     
     const [noteU, setNoteU] = useState({});
     const [note, setNote] = useState({
@@ -63,7 +71,7 @@ export default function Content(){
 
     function deletePermanently(id){
         setNoteList(prevNotes =>
-            prevNotes.map(note => note.id !== id)
+            prevNotes.filter(note => note.id !== id)
         );
     }
 
@@ -101,11 +109,11 @@ export default function Content(){
             <NoteList />
             <div className={`editor-container ${openEdit && 'collapse'}`}>
                 <div className='editor-inner' onChange={handleChangeU}>
-                    <div><button className='button' onClick={closeEditor}>Close</button></div><br/>
+                    <div><button className='button' onClick={closeEditor}>Close</button></div>
                     <div>
                         <input name='title' type='text' value={noteU.title}/>
-                    </div><br/>
-                    <textarea name='body' cols={40} rows={45} value={noteU.body}></textarea>
+                    </div>
+                    <textarea name='body' cols={40} rows={40} value={noteU.body}></textarea>
                     <button className='button' onClick={() => updateNote(noteU.id)}>Update</button>
                 </div>
             </div>

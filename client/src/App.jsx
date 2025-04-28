@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import {createBrowserRouter, RouterProvider, redirect} from "react-router-dom";
+import {createBrowserRouter, redirect, RouterProvider} from "react-router-dom";
 import AppContext from "./Contexts/AppContext";
 
 import Navbar from './Components/Navbar/Navbar';
@@ -20,10 +20,20 @@ export default function App(){
     setIsProfileCollapsed(prev => !prev);
   };
 
+  //To be edited
+  async function checkIfAuthenticated() {
+    const auth = true;
+
+    if(auth) return redirect('/');
+
+    return null;
+  }
+
+
   const router = createBrowserRouter([
     { path:  '/',
       element: 
-        <>
+        <> 
           <Navbar />
           <Main />
           <Footer />
@@ -31,11 +41,13 @@ export default function App(){
     },
     {
       path: '/signUp',
-      element: <SignUp/>                
+      element: <SignUp/>,
+      loader: checkIfAuthenticated                
     },
     {
       path: '/logIn',
-      element: <LogIn/>                
+      element: <LogIn/>,
+      loader: checkIfAuthenticated                
     },
     {
       path: "*",

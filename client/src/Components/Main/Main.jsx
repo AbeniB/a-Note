@@ -9,10 +9,10 @@ export default function Main(){
     const [currentPage, setCurrentPage] = useState("note");
 
     function changePage(e){
-        const button = e.target.closest('button'); // Get the closest button element
+        const button = e.target.closest('button');
         if (button) {
-            const { name } = button; // Access the 'name' property from the button
-            setCurrentPage(name); // Update the currentPage state
+            const { name } = button;
+            setCurrentPage(name);
         }
     }
     
