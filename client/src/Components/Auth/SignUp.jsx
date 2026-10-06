@@ -1,11 +1,12 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import { useContext, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { api } from '../../api';
+import AppContext from '../../Contexts/AppContext';
 import './SignUp.css';
-
 
 export default function SignUp() {
     const navigate = useNavigate();
+    const { setUser } = useContext(AppContext);
     const [formData, setFormData] = useState({
         username: '',
         email: '',
@@ -28,11 +29,22 @@ export default function SignUp() {
             setError('Passwords do not match');
             return;
         }
+
         setError('');
-        // TODO: Call API to sign up (e.g., axios.post('/api/signup', formData))
-        axios.post('http://localhost:5000/api/signup', formData)
-        .then(res => {console.log('Success:', res.data); navigate("/login")})
-        .catch(err => setError(err.response.data.message));
+        api
+            .post('/api/signup', {
+                username: formData.username,
+                email: formData.email,
+                password: formData.password
+            })
+            .then(({ data }) => {
+                setUser(data.user);
+                navigate('/login');
+            })
+            .catch((err) => {
+                const serverMessage = err.response?.data?.message || 'Signup failed';
+                setError(serverMessage);
+            });
     };
 
     return (
@@ -88,7 +100,7 @@ export default function SignUp() {
                     <button type="submit">Sign Up</button>
                 </form>
                 <p className="link">
-                    Already have an account? <a href="/login">Login</a>
+                    Already have an account? <Link to="/login">Login</Link>
                 </p>
             </div>
         </div>

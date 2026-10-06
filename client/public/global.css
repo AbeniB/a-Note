@@ -1,9 +1,162 @@
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
-body{
-  margin: 0px;
-  padding: 0px;
+:root {
+  --bg: #f4f7fb;
+  --surface: #ffffff;
+  --surface-alt: #f7f8fc;
+  --text: #111827;
+  --muted: #6b7280;
+  --line: #e5e7eb;
+  --primary: #2563eb;
+  --primary-soft: #dbeafe;
+  --shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  background: linear-gradient(180deg, #f8fafc 0%, #eef2ff 100%);
+  color: var(--text);
   overflow-y: scroll;
+}
+
+.app-shell {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #f8fafc 0%, #eef2ff 100%);
+  color: #111827;
+}
+
+.app-shell.theme-dark {
+  background: linear-gradient(180deg, #020817 0%, #0f172a 100%);
+  color: #e2e8f0;
+}
+
+.app-shell.theme-dark .navbar {
+  background: rgba(15, 23, 42, 0.8);
+  border-color: rgba(148, 163, 184, 0.18);
+}
+
+.app-shell.theme-dark .navbar .icon_brandName,
+.app-shell.theme-dark .noteList .currentPage_info,
+.app-shell.theme-dark .overviewCard strong,
+.app-shell.theme-dark .note .title,
+.app-shell.theme-dark .profile .profile_p1 span,
+.app-shell.theme-dark .profile-modal-header h3,
+.app-shell.theme-dark .profile-form label,
+.app-shell.theme-dark .login-form h2,
+.app-shell.theme-dark .signup-form h2,
+.app-shell.theme-dark .form-group label,
+.app-shell.theme-dark .link,
+.app-shell.theme-dark .sidebar .button,
+.app-shell.theme-dark .note,
+.app-shell.theme-dark .addNote,
+.app-shell.theme-dark .profile,
+.app-shell.theme-dark .overviewCard,
+.app-shell.theme-dark .profile-modal {
+  color: #e2e8f0;
+}
+
+.app-shell.theme-dark .main,
+.app-shell.theme-dark .content,
+.app-shell.theme-dark .noteList,
+.app-shell.theme-dark .sidebar,
+.app-shell.theme-dark .note,
+.app-shell.theme-dark .addNote,
+.app-shell.theme-dark .profile,
+.app-shell.theme-dark .profile-modal,
+.app-shell.theme-dark .overviewCard {
+  background: #0f172a;
+}
+
+.app-shell.theme-dark .note {
+  background: #1e293b;
+}
+
+.app-shell.theme-dark .sidebar {
+  background: linear-gradient(180deg, #0f172a 0%, #111827 100%);
+  border-color: rgba(148, 163, 184, 0.18);
+}
+
+.app-shell.theme-dark .sidebar .button,
+.app-shell.theme-dark .themeToggleBtn,
+.app-shell.theme-dark .sidebarToggleBtn,
+.app-shell.theme-dark .note .button_Holder .button,
+.app-shell.theme-dark .profile_p3 button,
+.app-shell.theme-dark .profile-form-actions .secondary-btn,
+.app-shell.theme-dark .modal-close {
+  background: #1e293b;
+  color: #e2e8f0;
+  border-color: rgba(148, 163, 184, 0.15);
+}
+
+.app-shell.theme-dark .sidebar .button img {
+  filter: brightness(0) invert(0.9);
+}
+
+.app-shell.theme-dark .note .button_Holder .destructive-btn {
+  border-color: rgba(248, 113, 113, 0.28);
+  background: rgba(127, 29, 29, 0.32);
+  color: #fca5a5;
+}
+
+.app-shell.theme-dark .note .button_Holder .destructive-btn:hover {
+  background: rgba(127, 29, 29, 0.48);
+}
+
+.app-shell.theme-dark .note,
+.app-shell.theme-dark .addNote,
+.app-shell.theme-dark .overviewCard,
+.app-shell.theme-dark .profile,
+.app-shell.theme-dark .profile-modal,
+.app-shell.theme-dark .login-form,
+.app-shell.theme-dark .signup-form {
+  border-color: rgba(148, 163, 184, 0.15);
+  box-shadow: 0 18px 40px rgba(2, 6, 23, 0.4);
+}
+
+.app-shell.theme-dark .note textarea,
+.app-shell.theme-dark .profile-form input,
+.app-shell.theme-dark input,
+.app-shell.theme-dark textarea,
+.app-shell.theme-dark .addNote input,
+.app-shell.theme-dark .addNote textarea {
+  background: #111827;
+  color: #e2e8f0;
+  border-color: rgba(148, 163, 184, 0.2);
+}
+
+.app-shell.theme-dark .login-form,
+.app-shell.theme-dark .signup-form {
+  background: rgba(15, 23, 42, 0.9);
+}
+
+.app-shell.theme-dark .error {
+  background: rgba(127, 29, 29, 0.35);
+  color: #fecaca;
+  border-color: rgba(248, 113, 113, 0.22);
+}
+
+.app-shell.theme-dark .link a {
+  color: #93c5fd;
+}
+
+.app-shell.theme-dark .addNote h2 {
+  color: #e2e8f0;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
 }
 
 .no-scroll {
@@ -11,25 +164,20 @@ body{
 }
 
 ::-webkit-scrollbar {
-  width: 15px;
+  width: 12px;
   height: 12px;
 }
 
 ::-webkit-scrollbar-track {
-  background-color: #f0f0f0;
+  background: #eef2f7;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #3E5879;
-  border: 2px solid #f0f0f0;
-  transition: background-color 0.3s ease;
+  background: #cbd5e1;
+  border: 2px solid #eef2f7;
+  border-radius: 999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #324966;
+  background: #94a3b8;
 }
-
-::-webkit-scrollbar-corner {
-  background-color: #f0f0f0;
-}
-  

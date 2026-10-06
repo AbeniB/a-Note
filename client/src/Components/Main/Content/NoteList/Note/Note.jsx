@@ -16,9 +16,9 @@ export default function Note({note_prop}){
                 {state !== 'trash' && <button className="button" onClick={() => openEditor(id)}>View</button>}
                 {state !== 'archive' && state !== 'trash' && <button className="button" onClick={() => archiveNote(id)}>Archive</button>}
                 {state === 'archive' && state !== 'trash' && <button className="button" onClick={() => restoreNote(id)}>Unarchive</button>}
-                {state !== 'trash' && <button className="button" onClick={() => trashNote(id)}>Trash</button>}
+                {state !== 'trash' && <button className="button destructive-btn" onClick={() => trashNote(id)}>Trash</button>}
                 {state === 'trash' && <button className="button" onClick={() => restoreNote(id)}>Restore</button>}
-                {state === 'trash' && <button className="button" onClick={() => deletePermanently(id)}>Delete</button>}
+                {state === 'trash' && <button className="button destructive-btn" onClick={() => deletePermanently(id)}>Delete</button>}
             </div>
         </div>
     </>)

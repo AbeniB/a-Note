@@ -1,18 +1,70 @@
-.noteList{
-    font-family: "Roboto Mono", monospace;
-    font-weight: bold;
-    background-color: #F5EFE7;
+.noteList {
     display: flex;
     flex-direction: column;
-    padding: 10px 20px 100px;
+    gap: 18px;
+    min-width: 0;
+    padding: 0 0 80px;
 }
-.noteList .currentPage_info{
-    color: #213555;
+
+.noteListOverview {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(140px, 1fr));
+    align-self: start;
+    gap: 14px;
+    width: 100%;
+    margin: 0 0 20px;
+    height: fit-content;
 }
-.noteList .notes_holder{
+
+.overviewCard {
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(148, 163, 184, 0.18);
+    border-radius: 18px;
+    padding: 16px 18px;
+    box-shadow: 0 12px 24px rgba(15, 23, 42, 0.04);
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    padding: 0px 10px;
-    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.overviewCard span {
+    color: #64748b;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.overviewCard strong {
+    font-size: clamp(1.5rem, 2vw, 2rem);
+    color: #111827;
+}
+
+.noteList .currentPage_info {
+    margin: 8px 0 0;
+    color: #111827;
+    font-size: 0.86rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.noteList .notes_holder {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), min(100%, 320px)));
+    align-items: start;
+    gap: 18px;
+    width: 100%;
+    margin: 0;
+}
+
+@media (max-width: 600px) {
+    .noteListOverview {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+    }
+
+    .overviewCard {
+        padding: 12px;
+    }
 }

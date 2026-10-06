@@ -1,11 +1,12 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import { useContext, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { api } from '../../api';
+import AppContext from '../../Contexts/AppContext';
 import './Login.css';
-
 
 const LogIn = () => {
     const navigate = useNavigate();
+    const { setUser } = useContext(AppContext);
     const [formData, setFormData] = useState({
         email: '',
         password: ''
@@ -22,12 +23,18 @@ const LogIn = () => {
             setError('All fields are required');
             return;
         }
+
         setError('');
-        // TODO: Call API to sign up (e.g., axios.post('/api/signup', formData))
-        axios.post('http://localhost:5000/api/login', formData)
-        .then(res => {console.log('Success:', res.data); navigate("/")})
-        .catch(err => setError(err.response.data.message));
-        console.log('Login:', formData);
+        api
+            .post('/api/login', formData)
+            .then(({ data }) => {
+                setUser(data.user);
+                navigate('/dashboard');
+            })
+            .catch((err) => {
+                const serverMessage = err.response?.data?.message || 'Login failed';
+                setError(serverMessage);
+            });
     };
 
     return (
@@ -61,7 +68,7 @@ const LogIn = () => {
                     <button type="submit">Login</button>
                 </form>
                 <p className="link">
-                    Don't have an account? <a href="/signup">Sign Up</a>
+                    Don't have an account? <Link to="/signup">Sign Up</Link>
                 </p>
             </div>
         </div>
