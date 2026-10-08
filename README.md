@@ -11,11 +11,11 @@ Note Editing: Users can edit existing notes, changing the title & content.
 
 User Authentication: Users can sign up and log in to access their notes.
 
-Profile Managment: Users Can Manage Their Profile.
+Profile Managment: Users Can Manage Their Profile. (In Development!)
 
 # Technology Stack
 * Frontend: Built using React, React Router, and Vite.
-* Backend: Built using Node.js  and Express.
+* Backend: Built using Node.js and Express.
 * Database: Uses MongoDB for storing user data and notes.
 
 # Project Structure
@@ -30,11 +30,11 @@ To run the application, follow these steps:
 Clone the repository: git clone [https://github.com/AbeniB/a-note.git]
 
 Install dependencies: npm install (or yarn install)
-Start the server: npm run start (or yarn start)
+Start the server: npm run start (or yarn start) or npm run dev (if you have installed nodemon globally)
 Start the client: npm run dev (or yarn dev)
 
 # Local Development
-Copy `server/.env.example` to `server/.env` and set `MONGODB_URI` if you want MongoDB-backed storage. Copy `client/.env.example` to `client/.env.local` if you need to change the local API URL. The example files contain no credentials and are safe to commit.
+Copy `server/.env.example` to `server/.env` and set `MONGODB_URI` if you want MongoDB-backed storage. Copy `client/.env.example` to `client/.env` if you need to change the API URL to production or local. The example files contain no credentials and are safe to commit.
 
 From the project root, start the API in the server directory and then launch the frontend in the client directory.
 
@@ -52,7 +52,7 @@ The server connects to the `a_note` database by default. Set these values in `se
 - `MONGODB_URI`: your Atlas cluster connection URI (keep credentials private).
 - `MONGODB_DB_NAME=a_note`: optional; this is already the default database name.
 
-The application uses the `users` and `notes` collections in that database. To keep existing data currently stored under `test`, migrate those collections to `a_note` in Atlas before switching databases: use Atlas Data Explorer export/import or `mongodump`/`mongorestore`, preserving both collections and their documents. Simply changing the application database name does not move existing data; without migration, the app will start with an empty database and create the collections when data is written.
+The application uses the `users` and `notes` collections in that database.
 
 # Contributing
 
